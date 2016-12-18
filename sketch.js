@@ -15,11 +15,12 @@ function pickLocation() {
   food = new Food(scl);
 }
 
+function mousePressed() {
+  s.activateSuperPower();
+}
+
 function draw(){
   // Drawing code here
-  var final_frame_rate =  constrain(frame_rate + s.total, 0, 25);
-  console.log(final_frame_rate);
-  frameRate(final_frame_rate);
   background(51);
   s.death();
   s.update();
@@ -27,7 +28,8 @@ function draw(){
   if (s.eat(food)) {
     pickLocation();
   }
-  fill(255, 0, 100);
+
+  fill(food.r, food.g, food.b);
   rect(food.x, food.y, scl, scl);
 }
 

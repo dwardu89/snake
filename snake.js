@@ -8,12 +8,13 @@ function Snake() {
   this.previousDirection = RIGHT_ARROW;
 
   this.reset = function() {
-    this.total = 1;
-    this.tail = []; 
     this.x = 0;
     this.y = 0;
     this.xspeed = 1;
     this.yspeed = 0;
+    this.total = 1;
+    this.tail = []
+    this.previousDirection = RIGHT_ARROW;
   }
 
   this.death = function() {
@@ -67,6 +68,7 @@ this.isOppositeDirection = function (direction) {
     return true;
   }
 }
+
   this.dir = function(direction) {
     if (this.isOppositeDirection(direction)) {
       console.log('Opposite Direction Detected!');
@@ -86,9 +88,22 @@ this.isOppositeDirection = function (direction) {
   this.eat = function(food) {
     if (food.canEat(this.x, this.y)) {
       this.total++;
+      var final_frame_rate =  constrain(frame_rate + s.total, 0, 25);
+      frameRate(final_frame_rate);
       return true;
     } else {
       return false;
-      }
     }
+  }
+
+  this.activateSuperPower = function() {
+    console.log(frameRate());
+      frameRate(5);
+      setTimeout(this.deactivateSuperPower, 10000);
+  }
+
+  this.deactivateSuperPower = function() {
+    var final_frame_rate =  constrain(frame_rate + s.total, 0, 25);
+    frameRate(final_frame_rate);
+  }
 }
