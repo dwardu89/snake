@@ -1,4 +1,6 @@
-function Snake() {
+function Snake(xMax, yMax) {
+  this.xMax = xMax;
+  this.yMax = yMax;
   this.x = 0;
   this.y = 0;
   this.xspeed = 1;
@@ -42,8 +44,8 @@ function Snake() {
     this.x = this.x + this.xspeed*scl;
     this.y = this.y + this.yspeed*scl;
 
-    this.x = constrain(this.x, 0, width - scl);
-    this.y = constrain(this.y, 0, height - scl);
+    this.x = constrain(this.x, 0, this.xMax - scl);
+    this.y = constrain(this.y, 0, this.yMax - scl);
   }
 
   this.show = function() {

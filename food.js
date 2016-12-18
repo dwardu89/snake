@@ -1,6 +1,6 @@
-function Food(scl) {
-  var cols = floor(width / scl);
-  var rows = floor(height / scl);
+function Food(xMax, yMax,scl) {
+  var cols = floor(xMax / scl);
+  var rows = floor(yMax / scl);
 
   var x = floor(random(cols)) * scl;
   var y = floor(random(rows)) * scl;
@@ -8,9 +8,9 @@ function Food(scl) {
   this.x = x;
   this.y = y;
 
-  this.r = constrain(floor(random(255)), 100,255);
-  this.g = constrain(floor(random(255)), 100,255);
-  this.b = constrain(floor(random(255)), 100,255);
+  this.r = 255;
+  this.g = 0;
+  this.b = 0;
 
   this.canEat = function(x, y) {
     var d = dist(this.x, this.y, x, y);
