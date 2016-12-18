@@ -22,7 +22,9 @@ function mousePressed() {
 function draw(){
   // Drawing code here
   background(51);
-  s.death();
+  if (s.death()) {
+    frameRate(frame_rate);
+  }
   s.update();
   s.show();
   if (s.eat(food)) {

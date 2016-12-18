@@ -4,6 +4,7 @@ function Snake() {
   this.xspeed = 1;
   this.yspeed = 0;
   this.total = 1;
+  this.top_score = 0;
   this.tail = []
   this.previousDirection = RIGHT_ARROW;
 
@@ -24,8 +25,10 @@ function Snake() {
       if (d < 1) {
         console.log('Snake Died!');
         this.reset();
+        return true;
       }
     }
+    return false;
   }
 
   this.update = function() {
@@ -90,6 +93,8 @@ this.isOppositeDirection = function (direction) {
       this.total++;
       var final_frame_rate =  constrain(frame_rate + s.total, 0, 25);
       frameRate(final_frame_rate);
+      this.top_score = Math.max(this.top_score, this.total);
+      console.log('Top Score: ' + this.top_score);
       return true;
     } else {
       return false;
